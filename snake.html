@@ -1,17 +1,41 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Snake - The game</title>
+    <style>
+        #controls button {
+            font-size: 1rem;
+            padding: 20px;
+            background: #EEE;
+            border: 1px solid #36A300;
+        }
+
+        #controls, #info, #scoreDiv {
+            display: inline-block;
+        }
+        #info {
+            height: 30px
+            font-size: 1rem;
+            background: #EEE;
+            border: 1px solid #D44A00;
+            padding: 2px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        #score {
+            font-size:2rem;
+        }
+    </style>
 </head>
 <body>
 	<div id='controls'>
 		<button id='start-game'>Start Game</button>
 	</div>
 	<div id='info'>
-		<p>Use the arrow keys to move the snake. Click 'P' to pause the game and 'R' to resume it</p>
+		<p>'P' == Pause/Resume Game || 'R' == Restart Game</p>
 	</div>
-	<div>Your score is <strong id='score'>0</strong></div>
+	<div id="scoreDiv">Your score is <strong id='score'>0</strong></div>
 	<ul id='scoreBar'>
 		
 	</ul>

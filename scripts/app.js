@@ -1,6 +1,6 @@
 (function() {
     "use strict";
-
+    var paused = false;
     var game = Game.createGame(),
         controls = document.getElementById('controls');
     var startGameButton = document.getElementById('start-game');
@@ -23,8 +23,13 @@
     }
 
     document.addEventListener('keydown', function(ev) {
-        if (ev.keyCode === 80) {
+        if (ev.keyCode === 80 && !paused) {
             game.pauseGame();
+            paused = true;
+        }
+        else if (ev.keyCode === 80 && paused) {
+            game.startGame();
+            paused = false;
         }
     });
     document.addEventListener('keydown', function(ev) {
