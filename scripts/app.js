@@ -29,7 +29,8 @@
     });
     document.addEventListener('keydown', function(ev) {
         if (ev.keyCode === 82) {
-            game.startGame();
+            game.deleteGame();
+            game.run();
         }
     });
 

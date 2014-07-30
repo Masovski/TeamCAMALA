@@ -11,8 +11,10 @@ var GameObjects = (function() {
         function Apple(cell) {
             this.body = new Cell(cell.x, cell.y);
         }
-        Apple.prototype.draw = function(renderer) {
-            renderer.drawCells([this.body], 'green');
+        Apple.prototype.draw = function (renderer) {
+            var base_image = new Image();
+            base_image.src = './resources/apple.png';
+            renderer.drawImage([this.body], base_image);
         };
 
         return Apple;

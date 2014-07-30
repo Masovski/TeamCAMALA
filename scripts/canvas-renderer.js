@@ -28,6 +28,12 @@ var CanvasRenderer = (function() {
                 this._context.fillRect(cells[i].x, cells[i].y, this._cellSize, this._cellSize);
             }
         };
+        CanvasRenderer.prototype.drawImage = function (cells, image) {
+            
+            for (var i = 0; i < cells.length; i++) {
+                this._context.drawImage(image, cells[i].x, cells[i].y);
+            }
+        };
 
         return CanvasRenderer;
     })();
