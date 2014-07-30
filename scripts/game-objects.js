@@ -50,28 +50,34 @@ var GameObjects = (function() {
 
         Snake.prototype.draw = function (renderer) {
             var snakeHeadImage = new Image();
-            var imageName = "";
+            var headImageName = "";
+            var bodyImageName = "";
             switch (this._direction) {
                 case Dirs.up:
-                    imageName = "snakeHead_up.png";
+                    headImageName = "snakeHead_up.png";
+                    bodyImageName = "snakeBody_vertical.png";
                     break;
                 case Dirs.down:
-                    imageName = "snakeHead_down.png";
+                    headImageName = "snakeHead_down.png";
+                    bodyImageName = "snakeBody_vertical.png";
                     break;
                 case Dirs.left:
-                    imageName = "snakeHead_left.png";
+                    headImageName = "snakeHead_left.png";
+                    bodyImageName = "snakeBody_horizontal.png";
                     break;
                 case Dirs.right:
-                    imageName = "snakeHead_right.png";
+                    headImageName = "snakeHead_right.png";
+                    bodyImageName = "snakeBody_horizontal.png";
                     break;
 
             }
-            snakeHeadImage.src = './resources/' + imageName;
-
+            snakeHeadImage.src = './resources/' + headImageName;
+            var snakeBodyImage = new Image();
+            snakeBodyImage.src = './resources/' + bodyImageName;
             
             
             renderer.drawImage([this._head], snakeHeadImage);
-            renderer.drawCells(this._body, 'black');
+            renderer.drawImage(this._body, snakeBodyImage);
         };
 
         Snake.prototype.eatApple = function() {
