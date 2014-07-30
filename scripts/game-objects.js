@@ -7,25 +7,14 @@ var GameObjects = (function() {
     }
 
     var Apple = (function () {
-        var randomGenerator = Math.floor((Math.random() * 12));
 
         function Apple(cell) {
             this.body = new Cell(cell.x, cell.y);
         }
         Apple.prototype.draw = function (renderer) {
             var appleImage = new Image();
-            var imageName = "";
-            
-        
-            if (randomGenerator <= 0) {
-                imageName = 'gold-apple.png';
-            } else if (randomGenerator <= 5) {
-                imageName = 'red-apple.png';
-            } else if (randomGenerator > 5) {
-                imageName = 'green-apple.png';
-            }
-          
-            appleImage.src = './resources/' + imageName;
+           
+            appleImage.src = './resources/red-apple.png';
             renderer.drawImage([this.body], appleImage);
         };
 
