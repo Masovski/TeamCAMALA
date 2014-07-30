@@ -31,8 +31,9 @@ var CanvasRenderer = (function() {
         CanvasRenderer.prototype.drawImage = function (cells, image) {
             
             for (var i = 0; i < cells.length; i++) {
-                this._context.drawImage(image, cells[i].x, cells[i].y);
+                this._context.drawImage(image, cells[i].x, cells[i].y);  
             }
+            
         };
 
         return CanvasRenderer;

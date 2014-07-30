@@ -6,15 +6,27 @@ var GameObjects = (function() {
         this.y = y;
     }
 
-    var Apple = (function() {
+    var Apple = (function () {
+        var randomGenerator = Math.floor((Math.random() * 12));
 
         function Apple(cell) {
             this.body = new Cell(cell.x, cell.y);
         }
         Apple.prototype.draw = function (renderer) {
-            var base_image = new Image();
-            base_image.src = './resources/apple.png';
-            renderer.drawImage([this.body], base_image);
+            var appleImage = new Image();
+            var imageName = "";
+            
+        
+            if (randomGenerator <= 0) {
+                imageName = 'gold-apple.png';
+            } else if (randomGenerator <= 5) {
+                imageName = 'red-apple.png';
+            } else if (randomGenerator > 5) {
+                imageName = 'green-apple.png';
+            }
+          
+            appleImage.src = './resources/' + imageName;
+            renderer.drawImage([this.body], appleImage);
         };
 
         return Apple;
@@ -47,9 +59,30 @@ var GameObjects = (function() {
             this._head.y += this._direction[1] * this._cellSize;
         };
 
-        Snake.prototype.draw = function(renderer) {
-            renderer.drawCells([this._head], 'red');
-            renderer.drawCells(this._body, 'blue');
+        Snake.prototype.draw = function (renderer) {
+            var snakeHeadImage = new Image();
+            var imageName = "";
+            switch (this._direction) {
+                case Dirs.up:
+                    imageName = "snakeHead_up.png";
+                    break;
+                case Dirs.down:
+                    imageName = "snakeHead_down.png";
+                    break;
+                case Dirs.left:
+                    imageName = "snakeHead_left.png";
+                    break;
+                case Dirs.right:
+                    imageName = "snakeHead_right.png";
+                    break;
+
+            }
+            snakeHeadImage.src = './resources/' + imageName;
+
+            
+            
+            renderer.drawImage([this._head], snakeHeadImage);
+            renderer.drawCells(this._body, 'black');
         };
 
         Snake.prototype.eatApple = function() {
